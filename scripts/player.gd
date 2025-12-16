@@ -31,3 +31,6 @@ func _physics_process(delta: float) -> void:
 		direction.y = 0
 	velocity = direction.normalized() * speed
 	move_and_slide()
+
+func player_sell_method():
+	pass
