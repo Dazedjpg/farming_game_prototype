@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://coprshyr0naui"]
+[gd_scene load_steps=17 format=3 uid="uid://coprshyr0naui"]
 
 [ext_resource type="Script" uid="uid://baveb1db0rsnj" path="res://scripts/growing_zone.gd" id="1_0yq1v"]
 [ext_resource type="Texture2D" uid="uid://boaaxbrg026j1" path="res://assets/farmingTilesheetComplete.png" id="2_1k53b"]
@@ -20,6 +20,18 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sju1w"]
 size = Vector2(42, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yq1v"]
+atlas = ExtResource("2_1k53b")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k53b"]
+atlas = ExtResource("2_1k53b")
+region = Rect2(192, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq1x4"]
+atlas = ExtResource("2_1k53b")
+region = Rect2(176, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqnt4"]
 atlas = ExtResource("2_1k53b")
@@ -45,8 +57,26 @@ region = Rect2(160, 32, 16, 16)
 atlas = ExtResource("2_1k53b")
 region = Rect2(144, 32, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sju1w"]
+atlas = ExtResource("2_1k53b")
+region = Rect2(192, 176, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lt6is"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yq1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k53b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq1x4")
+}],
+"loop": true,
+"name": &"berry",
+"speed": 0.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vqnt4")
@@ -75,10 +105,13 @@ animations = [{
 "name": &"carrot",
 "speed": 0.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sju1w")
+}],
 "loop": true,
 "name": &"none",
-"speed": 5.0
+"speed": 0.0
 }]
 
 [node name="growing_zone" type="StaticBody2D"]
@@ -107,7 +140,11 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="berry_grow_timer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="carrot_grow_timer" to="." method="_on_carrot_grow_timer_timeout"]
 [connection signal="timeout" from="cabbage_grow_timer" to="." method="_on_cabbage_grow_timer_timeout"]
+[connection signal="timeout" from="berry_grow_timer" to="." method="_on_berry_grow_timer_timeout"]

@@ -22,6 +22,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			plantgrowing = true
 			$cabbage_grow_timer.start()
 			$plant.play("cabbage")
+		elif plant == 3:
+			$plant.visible = true
+			$plant.frame = 0
+			plantgrowing = true
+			$berry_grow_timer.start()
+			$plant.play("berry")
 	else:
 		print("plant is already growing here")
 
@@ -42,7 +48,16 @@ func _on_cabbage_grow_timer_timeout() -> void:
 	elif cabbage_plant.frame == 1:
 		cabbage_plant.frame = 2
 		plant_grown = true
-
+		
+func _on_berry_grow_timer_timeout() -> void:
+	var berry_plant = $plant
+	if berry_plant.frame == 0:
+		berry_plant.frame = 1
+		$berry_grow_timer.start()
+	elif berry_plant.frame == 1:
+		berry_plant.frame = 2
+		plant_grown = true
+	
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if plant_grown:
@@ -52,6 +67,9 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			elif plant == 2:
 				Global.numofcabbage += 1
 				$cabbage_grow_timer.stop()
+			elif plant == 3:
+				Global.numofberry += 1
+				$berry_grow_timer.stop()
 			plantgrowing = false
 			plant_grown = false
 			$plant.visible = false

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuyst0ll08ftj"]
+
+[ext_resource type="Texture2D" uid="uid://boaaxbrg026j1" path="res://assets/farmingTilesheetComplete.png" id="1_4s3nh"]
+[ext_resource type="Script" uid="uid://dtt45rewj0ibs" path="res://scripts/berry_seedpack.gd" id="1_aqdfe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igund"]
+atlas = ExtResource("1_4s3nh")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3i2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igund")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnxsd"]
+size = Vector2(21, 21)
+
+[node name="berry_seedpack" type="StaticBody2D"]
+script = ExtResource("1_aqdfe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_g3i2r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.5, 0.5)
+shape = SubResource("RectangleShape2D_xnxsd")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
