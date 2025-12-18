@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbbrw47v4a5hh"]
+
+[ext_resource type="Script" uid="uid://bey4drhol3yqp" path="res://scripts/chicken.gd" id="1_1yv3s"]
+[ext_resource type="Texture2D" uid="uid://boaaxbrg026j1" path="res://assets/farmingTilesheetComplete.png" id="2_nutj5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc7ma"]
+atlas = ExtResource("2_nutj5")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0du8g"]
+atlas = ExtResource("2_nutj5")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bti8l"]
+atlas = ExtResource("2_nutj5")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pep2a"]
+atlas = ExtResource("2_nutj5")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sgx4"]
+atlas = ExtResource("2_nutj5")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aah5"]
+atlas = ExtResource("2_nutj5")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1fwex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc7ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0du8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bti8l")
+}],
+"loop": true,
+"name": &"eating",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pep2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sgx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aah5")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trwpf"]
+radius = 11.18034
+
+[node name="chicken" type="CharacterBody2D"]
+script = ExtResource("1_1yv3s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_1fwex")
+animation = &"walking"
+
+[node name="changestatetimer" type="Timer" parent="."]
+autostart = true
+
+[node name="walktimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2)
+shape = SubResource("CircleShape2D_trwpf")
+
+[connection signal="timeout" from="changestatetimer" to="." method="_on_changestatetimer_timeout"]
+[connection signal="timeout" from="walktimer" to="." method="_on_walktimer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kwq7xorckpqm"]
+[gd_scene load_steps=20 format=3 uid="uid://kwq7xorckpqm"]
 
 [ext_resource type="Texture2D" uid="uid://boaaxbrg026j1" path="res://assets/farmingTilesheetComplete.png" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://dkevc5pi88h3i" path="res://scripts/world.gd" id="1_qfnet"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bb0g8gsa87wy1" path="res://scenes/carrot_seedpack.tscn" id="5_i7141"]
 [ext_resource type="PackedScene" uid="uid://1ehqcl08265c" path="res://scenes/sellzone.tscn" id="7_i7141"]
 [ext_resource type="PackedScene" uid="uid://swux1smf4gnt" path="res://scenes/shop.tscn" id="8_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://dbbrw47v4a5hh" path="res://scenes/chicken.tscn" id="9_7r4gi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwgxs"]
 texture = ExtResource("1_nnsk1")
@@ -21,10 +22,15 @@ texture = ExtResource("1_nnsk1")
 6:6/0 = 0
 7:6/0 = 0
 8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:6/0 = 0
+9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:6/0 = 0
+10:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:6/0 = 0
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:6/0 = 0
+12:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.5180225, -2.877739, -2.3381634, -5.5756197, -0.17985916, -6.4749136, 1.978445, -4.6763268, 1.6187286, 8, -1.7985878, 8, -8, 6.115198, -8, -5.036044)
 0:7/0 = 0
 1:7/0 = 0
 2:7/0 = 0
@@ -33,11 +39,17 @@ texture = ExtResource("1_nnsk1")
 5:7/0 = 0
 6:7/0 = 0
 7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:7/0 = 0
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:7/0 = 0
+10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.755479, -4.4964685, -5.755479, -4.4964685, 5.935339, -8, 8)
 11:7/0 = 0
+11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.4173164, -6.2950544, 8, -6.6547728, 8, 6.115198, 3.956892, 5.935339)
 12:7/0 = 0
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.5180225, -4.3166084, -2.3381634, -8, 1.7985878, -8, 1.2590103, 6.4749146, -8, 6.115198, -8, -5.036044)
 0:8/0 = 0
 1:8/0 = 0
 2:8/0 = 0
@@ -99,6 +111,7 @@ texture = ExtResource("1_nnsk1")
 1:12/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_4wyf3"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rwgxs")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7141"]
@@ -242,6 +255,12 @@ position = Vector2(634, 307)
 
 [node name="shop" parent="." instance=ExtResource("8_4mrxx")]
 position = Vector2(772, 264)
+
+[node name="chicken" parent="." instance=ExtResource("9_7r4gi")]
+position = Vector2(240, 515)
+
+[node name="chicken2" parent="." instance=ExtResource("9_7r4gi")]
+position = Vector2(395, 522)
 
 [node name="player" parent="." instance=ExtResource("2_rwgxs")]
 position = Vector2(66, 59)
