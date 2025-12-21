@@ -5,3 +5,4 @@ var numofcarrot = 0
 var numofcabbage = 0
 var numofberry = 0
 var coins = 100
+var weather

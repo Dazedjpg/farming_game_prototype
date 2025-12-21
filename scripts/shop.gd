@@ -4,6 +4,10 @@ func _ready() -> void:
 	$shopmenu.visible = false
 
 func _process(delta: float) -> void:
+	if Global.weather == "rain":
+		$AnimatedSprite2D2.visible = false
+	elif Global.weather == "none":
+		$AnimatedSprite2D2.visible = true
 	if $shopmenu.item1owned == true:
 		$berry_seedpack.visible = true
 	elif $shopmenu.item2owned == true:
