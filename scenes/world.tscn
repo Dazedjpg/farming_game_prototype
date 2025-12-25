@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://kwq7xorckpqm"]
+[gd_scene load_steps=22 format=3 uid="uid://kwq7xorckpqm"]
 
 [ext_resource type="Texture2D" uid="uid://boaaxbrg026j1" path="res://assets/farmingTilesheetComplete.png" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://dkevc5pi88h3i" path="res://scripts/world.gd" id="1_qfnet"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://swux1smf4gnt" path="res://scenes/shop.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dbbrw47v4a5hh" path="res://scenes/chicken.tscn" id="9_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://cj3k4conbgpnx" path="res://scenes/weather_control.tscn" id="9_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://k8aom4yf1geo" path="res://scenes/day_and_night.tscn" id="10_e3hyu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwgxs"]
 texture = ExtResource("1_nnsk1")
@@ -269,8 +270,11 @@ position = Vector2(240, 515)
 [node name="chicken2" parent="." instance=ExtResource("9_7r4gi")]
 position = Vector2(395, 522)
 
-[node name="weather_control" parent="." instance=ExtResource("9_w7kh3")]
-position = Vector2(185, 0)
-
 [node name="player" parent="." instance=ExtResource("2_rwgxs")]
 position = Vector2(66, 59)
+
+[node name="weather_control" parent="." instance=ExtResource("9_w7kh3")]
+visible = false
+position = Vector2(185, 0)
+
+[node name="day_and_night" parent="." instance=ExtResource("10_e3hyu")]

@@ -15,7 +15,7 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	if current_weather == "none":
 		current_weather = "rain"
-		$Timer.wait_time = randi_range(25, 40)
+		$Timer.wait_time = randi_range(60, 80)
 		$Timer.start()
 	elif current_weather == "rain":
 		current_weather = "none"
